@@ -1,0 +1,64 @@
+@startuml
+title Diagrama de Casos de Uso - Plataforma de Reciclaje Temuco
+
+actor "Usuario Común" as UC
+actor "Usuario Emprendedor" as UE
+actor "Municipalidad" as M
+rectangle "Sistema Web de Reciclaje" {
+  
+  ' Casos de uso generales
+  usecase "Registrarse" as UC1
+  usecase "Iniciar sesión" as UC2
+  usecase "Ver puntos de reciclaje" as UC3
+  usecase "Buscar punto más cercano" as UC4
+  usecase "Comentar punto verde" as UC5
+  usecase "Reportar estado de punto" as UC6
+  usecase "Agregar nuevo punto verde" as UC7
+  usecase "Consultar guía de aprendizaje" as UC8
+  usecase "Revisar notificaciones" as UC9
+  usecase "Ver calendario de eventos" as UC10
+  
+  ' Casos de uso especiales del emprendedor
+  usecase "Vender residuos reciclables" as UE1
+  usecase "Comprar residuos reciclables" as UE2
+  usecase "Gestionar transacciones" as UE3
+
+  ' Casos de uso de la municipalidad
+  usecase "Publicar notificaciones oficiales" as M1
+  usecase "Actualizar estado de contenedores" as M3
+}
+
+' Relaciones del usuario común
+UC --> UC1
+UC --> UC2
+UC --> UC3
+UC --> UC4
+UC --> UC5
+UC --> UC6
+UC --> UC7
+UC --> UC8
+UC --> UC9
+UC --> UC10
+
+' Relaciones del usuario emprendedor
+UE --> UC1
+UE --> UC2
+UE --> UC3
+UE --> UC4
+UE --> UC5
+UE --> UC6
+UE --> UC7
+UE --> UC8
+UE --> UC9
+UE --> UC10
+UE --> UE1
+UE --> UE2
+UE --> UE3
+
+' Relaciones de la municipalidad
+M --> M1
+M --> M3
+M --> UC9
+M --> UC10
+
+@enduml

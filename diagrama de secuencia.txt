@@ -1,0 +1,64 @@
+@startuml
+title Diagrama de Secuencia - Plataforma de Reciclaje Temuco
+
+actor "Usuario Común" as UC
+actor "Usuario Emprendedor" as UE
+actor "Municipalidad (Cuenta Verificada)" as Muni
+participant "Página Web" as Web
+participant "Base de Datos" as BD
+participant "Servicio de Mapas" as Mapa
+participant "Sistema de Notificaciones" as Noti
+
+== Registro de Usuario ==
+UC -> Web : Completa formulario de registro
+Web -> BD : Guarda datos del usuario
+BD --> Web : Confirmación de registro
+Web -> UC : Envía correo de confirmación
+UC --> Noti : Se suscribe a notificaciones
+
+== Búsqueda de Puntos Verdes ==
+UC -> Web : Solicita ver puntos de reciclaje cercanos
+Web -> Mapa : Solicita ubicación de puntos
+Mapa --> Web : Devuelve lista de puntos cercanos
+Web -> UC : Muestra puntos en el mapa
+
+== Detalles del Punto Verde ==
+UC -> Web : Selecciona un punto
+Web -> BD : Consulta información y comentarios
+BD --> Web : Devuelve detalles del punto
+Web -> UC : Muestra detalles (tipo, estado, comentarios)
+
+== Reportar Estado / Comentar ==
+UC -> Web : Envía comentario o reporte (por ejemplo: "Contenedor lleno")
+Web -> BD : Registra comentario / voto de estado
+BD --> Web : Confirmación de registro
+Web -> UC : Muestra mensaje "Reporte enviado correctamente"
+
+== Agregar un Nuevo Punto ==
+UC -> Web : Propone nuevo punto verde
+Web -> BD : Guarda punto con estado "pendiente de verificación"
+BD --> Web : Confirmación
+Web -> Noti : Notifica a otros usuarios para confirmar existencia
+Noti --> UC : Envía correo o notificación a usuarios cercanos
+
+== Votación para eliminar punto ==
+UC -> Web : Marca "Punto no existe"
+Web -> BD : Registra voto negativo
+BD -> Web : Si varios usuarios confirman, elimina punto
+Web -> Noti : Envía notificación a usuarios sobre cambio de estado
+
+== Publicaciones del Usuario Emprendedor ==
+UE -> Web : Publica oferta o búsqueda de residuos reciclables
+Web -> BD : Guarda publicación
+BD --> Web : Confirmación
+Web -> UE : Muestra publicación activa
+
+== Notificaciones y Noticias ==
+Muni -> Web : Publica noticia sobre evento o contenedor nuevo
+Web -> BD : Guarda publicación verificada
+Noti -> Todos : Envía notificación a usuarios registrados
+UE -> Web : Consulta calendario de eventos
+Web -> BD : Devuelve eventos y charlas
+Web -> UE : Muestra calendario actualizado
+
+@enduml
