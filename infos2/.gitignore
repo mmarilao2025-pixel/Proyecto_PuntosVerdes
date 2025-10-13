@@ -1,0 +1,76 @@
+# ===========================
+# .gitignore para Django
+# ===========================
+
+# --- Entornos virtuales ---
+venv/
+env/
+.venv/
+.env/
+
+# --- Base de datos local ---
+db.sqlite3
+*.sqlite3
+
+# --- Archivos compilados de Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Archivos de logs ---
+*.log
+
+# --- Archivos de configuración y variables ---
+.env
+*.env
+
+# --- Archivos temporales o de respaldo ---
+*.tmp
+*.bak
+*.swp
+*.swo
+*.~lock.*
+
+# --- Archivos generados por Django ---
+/media/
+/static/
+/staticfiles/
+
+# --- Archivos de distribución o instalación ---
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+
+# --- Archivos de editores y IDEs ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Archivos del sistema operativo ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Archivos de frontend (si usas React/Vue/etc) ---
+node_modules/
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+/coverage/
+/build/
+/dist/
+
+# --- Archivos de caché ---
+.cache/
+pytest_cache/
+.coverage
+.tox/
+.mypy_cache/
+.pytest_cache/
