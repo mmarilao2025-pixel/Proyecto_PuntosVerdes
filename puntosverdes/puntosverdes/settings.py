@@ -75,9 +75,9 @@ WSGI_APPLICATION = 'puntosverdes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mi_pagina_web',  # Nombre de la BD que creaste en pgAdmin
+        'NAME': 'postgres',  # Nombre de la BD que creaste en pgAdmin
         'USER': 'postgres',       # Usuario de PostgreSQL
-        'PASSWORD': 'tu_password', # La contraseña que usas en pgAdmin
+        'PASSWORD': 'admin', # La contraseña que usas en pgAdmin
         'HOST': 'localhost',      # O la IP de tu servidor
         'PORT': '5432',           # Puerto por defecto de PostgreSQL
     }
