@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+from urllib import request
 
-# Create your views here.
+def Producto(request):
+    return HttpResponse('<h1>Hola Mundo/</h1>')
+
+def crear_producto():
+    pass
