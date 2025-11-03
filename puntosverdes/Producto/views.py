@@ -6,11 +6,12 @@ def Producto(request):
     return HttpResponse('<h1>Hola Mundo/</h1>')
 
 def obtener_todo(request):
-    productos = []
+    productos = Producto.objects.all()
     context = {"nombre": "Pan",
                "cantidad": 1
                }
-    return render(request, 'productos/obtener_producto.html')
+    return render(request, 'productos/obtener_producto.html', 
+                  {'productos': productos})
 
 def inicio(request):
     return render(request, 'productos/inicio.html')
