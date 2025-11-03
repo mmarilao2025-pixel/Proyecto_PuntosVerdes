@@ -2,8 +2,8 @@ from django.shortcuts import render, HttpResponse
 from urllib import request
 from .models import Producto
 
-def Producto(request):
-    return HttpResponse('<h1>Hola Mundo/</h1>')
+#def Producto(request):
+    #return HttpResponse('<h1>Hola Mundo/</h1>')
 
 def obtener_todo(request):
     productos = Producto.objects.all()
