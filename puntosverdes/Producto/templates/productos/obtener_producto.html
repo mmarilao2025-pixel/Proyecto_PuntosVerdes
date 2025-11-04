@@ -1,33 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista de Productos</title>
+    <title>Productos disponibles</title>
 </head>
 <body>
-    <h1>Lista de Productos</h1>
-    
-    <nav>
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/obtener-todo/">Productos</a></li>
-        </ul>
-    </nav>
-    
-    <div>
-        <h2>Productos en stock:</h2>
-        {% if productos %}
-            <ul>
-            {% for producto in productos %}
-                <li>{{ producto.nombre }} - Cantidad: {{ producto.cantidad }}</li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>No hay productos disponibles.</p>
-        {% endif %}
-
-        <h3>Producto del contexto:</h3>
-        <p>Nombre: {{ nombre }}</p>
-        <p>Cantidad: {{ cantidad }}</p>
-    </div>
+    <h1>Productos disponibles</h1>
+    <ul>
+        {% for producto in productos %}
+            <li>{{ producto.nombre }} - Cantidad: {{ producto.cantidad }} - Precio: ${{ producto.precio }}</li>
+        {% empty %}
+            <li>No hay productos disponibles.</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
