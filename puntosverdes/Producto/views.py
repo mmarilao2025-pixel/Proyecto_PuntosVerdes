@@ -14,5 +14,10 @@ def obtener_todo(request):
 def inicio(request):
     return render(request, 'productos/inicio.html')
 
-def poId(request, id):
-    print(id)
+def porId(request, id):
+   # print(id)
+   # producto = Producto.object.get (id=id)
+    producto = get_object_or_404(Producto, id=id)  
+    context = {'producto':Producto}
+    return render(request, 'productos/obtener_producto.html', context)
+    
