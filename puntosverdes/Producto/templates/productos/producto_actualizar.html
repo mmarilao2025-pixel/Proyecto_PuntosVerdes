@@ -5,15 +5,23 @@
   <title>Actualizar Producto</title>
 </head>
 <body>
-  <form action="/productos/actualizar/{{producto.id}}">
+  
+  <h1>Actualizar Producto: {{ producto.nombre }}</h1> 
+  
+  <form method="POST" action="{% url 'productos_actualizar' id=producto.id %}"> 
     {% csrf_token %}
-    <label for="nombre">[translate:Nombre:]</label>
-    <input type="text" id="nombre" name="nombre">
-    <label for="descripcion">[translate:Descripcion:]</label>
-    <input type="text" id="descripcion" name="descripcion">
-    <label for="cantidad">[translate:Cantidad:]</label>
-    <input type="number" id="cantidad" name="cantidad">
-    <input type="submit" value="[translate:Actualizar]">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="{{ producto.nombre }}" required>
+    <br>
+    
+    <label for="descripcion">Descripción:</label>
+    <input type="text" id="descripcion" name="descripcion" value="{{ producto.descripcion }}" required>
+    <br>
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" name="cantidad" value="{{ producto.cantidad }}" required>
+    <br>
+    <input type="submit" value="Actualizar">
   </form>
+  
 </body>
 </html>

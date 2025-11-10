@@ -32,16 +32,12 @@ def EliminarId(request, id):
     return redirect('obtener_todo') # Asumiendo que 'obtener_todo' es tu lista
 
 def ActualizarId(request, id):
-    # Usa 'producto' en minúscula
     producto = get_object_or_404(Producto, id=id)
     if request.method == 'POST':
         producto.nombre = request.POST.get('nombre')
         producto.descripcion = request.POST.get('descripcion')
         producto.cantidad = request.POST.get('cantidad')
         producto.save()
-        
-        # Redirige a la vista del producto individual, pasando el ID de la instancia
-        # ¡IMPORTANTE!: Usa producto.id, no solo producto
         return redirect('productos_porId', id=producto.id) 
     else:
         context = {'producto': producto}
