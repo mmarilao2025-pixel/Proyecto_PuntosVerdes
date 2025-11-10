@@ -13,3 +13,6 @@ def obtener_todo(request):
 
 def inicio(request):
     return render(request, 'productos/inicio.html')
+
+def poId(request, id):
+    print(id)
